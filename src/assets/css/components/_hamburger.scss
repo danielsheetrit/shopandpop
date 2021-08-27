@@ -1,0 +1,31 @@
+.hamburger-mode {
+
+    header {
+
+        .header-links {
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            width: 100%;
+            height: 100vh;
+            z-index: 99;
+            left: 0;
+            top: 0;
+            padding: 20px;
+            background-color: $clr3;
+
+            a {
+                margin-block-end: 1.2rem;
+                font-size: rem(20px);
+                color: $clr1;
+            }
+        }
+
+        .hamburger {
+            position: fixed;
+            margin-inline-end: 1rem;
+            color: $clr1;
+            right: 0px;
+        }
+    }
+}

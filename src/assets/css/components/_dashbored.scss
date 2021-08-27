@@ -1,0 +1,27 @@
+.dashbored {
+
+    h1 {
+        font-size: rem(32px);
+        font-family: inter-sb;
+    }
+
+    article {
+        padding: 1.2rem; 
+        border: 1px solid $clr5;
+        border-radius: 24px;
+        margin-block-start: 32px;
+        align-items: flex-start;
+
+        span {
+            font-size: 1rem;
+            font-family: inter-reg;
+        }
+
+        button {
+            font-size: 1rem;
+            font-family: inter-sb;
+            text-decoration: underline;
+            margin-block-start: 1rem;
+        }
+    }
+}

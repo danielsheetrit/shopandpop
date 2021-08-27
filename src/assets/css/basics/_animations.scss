@@ -1,0 +1,39 @@
+.scrolling-animation {
+    width: rem(30px);
+    height: rem(50px);
+    border: 2px solid $clr3;
+    margin-block-start: rem(64px);
+    border-radius: rem(50px);
+    position: relative;
+    &::before, &::after {
+        content: '';
+        position: absolute;
+        top: 20%;
+        left: 50%;
+        border: 2px solid $clr3;
+        height: 10px;
+        width: 10px;
+        transform: translate(-50%, -50%) rotate(45deg);
+        border-top: transparent;
+        border-left: transparent;
+        animation: scroll-down-animation 1s ease-in-out infinite;
+    }
+    &::after {
+        top: 30%
+    }
+    @keyframes scroll-down-animation {
+        0% {
+            opacity: 0;
+        }
+        30% {
+            opacity: 1;
+        }
+        60% {
+            opacity: 1;
+        }
+        100% {
+            opacity: 0;
+            top: 90%;
+        }
+    }
+}

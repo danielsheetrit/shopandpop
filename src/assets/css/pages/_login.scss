@@ -1,0 +1,50 @@
+.login {
+    padding-top: 140px;
+    height: 75vh;
+
+    h2 {
+        font-size: 32px;
+        font-family: inter-sb;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-block-end: 1rem;
+        margin-block-start: 32px;
+        button {
+            padding: 8px 16px;
+            border-radius: 24px;
+            background-color: $clr3;
+            color: $clr1;
+            margin-block-start: 1rem;
+        }
+    }
+
+    .input-container {
+        margin-block-end: 1rem;
+        input {
+            margin-block-start: 4px;
+            border-radius: 24px;
+            border: none;
+            background-color: $clr4;
+            outline: none;
+            padding: 12px 12px 12px 18px;
+            font-size: 1rem;
+        }
+    }
+
+    .signup-login-suggest{
+        p {
+            color: $clr5;
+            font-size: rem(15px);
+            font-family: inter-sb;
+        }
+        button {
+            margin-inline-start: 6px;
+            text-decoration: underline;
+            color: $clr2;
+        }
+    }
+}

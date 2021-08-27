@@ -1,0 +1,28 @@
+// Setup
+@import "./setup/variables";
+@import "./setup/functions";
+@import "./setup/mixins";
+@import "./setup/typography";
+
+// Basics
+@import "./basics/helpers";
+@import "./basics/layout";
+@import "./basics/base";
+@import "./basics/buttons";
+@import "./basics/animations";
+
+//components 
+@import "./components/app-header";
+@import "./components/app-footer";
+@import "./components/hamburger";
+@import "./components/product-list";
+@import "./components/product-preview";
+@import "./components/checkout-preview";
+@import "./components/product-amount";
+@import "./components/dashbored";
+
+//pages
+@import "./pages/home";
+@import "./pages/product-details";
+@import "./pages/product-checkout";
+@import "./pages/login";

@@ -1,0 +1,19 @@
+.product-list {
+    margin-block-start: 104px;
+    min-height: 70vh;
+    h2 {
+        text-transform: capitalize;
+        font-family: inter-sb;
+        font-size: rem(32px);
+        @media (max-width: $narrow-breakpoint) {
+            text-align: center;
+        }
+    }
+
+    .product-list-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(288px, 1fr));
+        margin-block-start: 32px;
+        gap: 1rem;
+    }
+}
