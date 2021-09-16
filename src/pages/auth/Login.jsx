@@ -13,7 +13,7 @@ export function Login() {
     const [isLogin, setIsLogin] = useState(true)
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-
+   
     const { enqueueSnackbar, closeSnackbar } = useSnackbar();
 
     const dispatch = useDispatch()
@@ -39,16 +39,26 @@ export function Login() {
     async function handleSubmit(ev) {
         ev.preventDefault()
 
+        if (password.length < 6) {
+            handleSnackbar('Password has to be at least 6 characters', 'error')
+            clearForm()
+            return
+        }
+
         try {
+
             if (isLogin) {
+                
                 const res = await auth.signInWithEmailAndPassword(email, password)
                 dispatch(setUser(res.user))
                 handleSnackbar('You are now logged in!', 'success')
             } else {
-                const res = auth.createUserWithEmailAndPassword(email, password)
-                dispatch(setUser(res.i.user))
+
+                const res = await auth.createUserWithEmailAndPassword(email, password)
+                dispatch(setUser(res.user))
                 handleSnackbar('Welcome! we already logged you in', 'success')
             }
+
             histroy.push('/')
 
         } catch (err) {

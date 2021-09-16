@@ -120,7 +120,7 @@ export function ProductCheckout() {
                             <button
                                 onClick={() => handlePurchase()}
                             >
-                                Complete oreder</button>
+                                Complete order</button>
                         </div>
                     </div>
                     :

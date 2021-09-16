@@ -79,7 +79,7 @@ export function AppHeader() {
                 </div>
 
                 <div className="header-cart">
-                    {currentUser ? <Link to="/checkout">Dashbored
+                    {currentUser ? <Link to="/checkout">Dashboard
                         <MaterialBadge
                             numOfItems={cart.length}
                         />
