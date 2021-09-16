@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router'
 
-import { productService } from '../services/product.service'
+import { cartService } from '../services/cart.service'
 import { ProductList } from '../components/ProductList'
 import { AppFooter } from '../components/AppFooter'
 
@@ -19,9 +19,8 @@ export function ProductCategory() {
 
     async function fetchProducts() {
         setIsLoading(true)
-        const fixedCategory =
-            (category === 'explore') ? '' : `/category/${category}`;
-        const products = await productService.query(fixedCategory)
+        const fixedCategory = `products/${category}`;
+        const products = await cartService.query(fixedCategory)
         setProducts(products)
         setIsLoading(false)
     }

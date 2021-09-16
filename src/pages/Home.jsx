@@ -21,7 +21,7 @@ export function Home() {
 
     async function fetchProducts() {
         setIsLoading(true)
-        await dispatch(getProducts('?limit=8'))
+        await dispatch(getProducts('products/explore'))
         setIsLoading(false)
     }
 

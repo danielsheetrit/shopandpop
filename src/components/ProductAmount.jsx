@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux'
 
 import { saveProduct, removeProduct } from '../store/actions/product.action'
-import { productService } from '../services/product.service'
+import { cartService } from '../services/cart.service'
 
 export function ProductAmount({ product }) {
 
@@ -10,10 +10,10 @@ export function ProductAmount({ product }) {
     async function handleClick(bool, product) {
         if (bool) {
             const res = await dispatch(saveProduct(product))
-            productService.addProduct(res.product)
+            cartService.addProduct(res.product)
         } else {
             const res = await dispatch(removeProduct(product.id))
-            productService.removeProduct(res.productId)
+            cartService.removeProduct(res.productId)
         }
     }
 

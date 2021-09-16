@@ -2,16 +2,16 @@ import { httpService } from './http.service'
 import { storageService } from './storage.service'
 import { KEY_DB } from './constances.service'
 
-export const productService = {
+export const cartService = {
     query,
     addProduct,
     removeProduct,
     clearStorage
 }
 
-async function query(category = '') {
+async function query(params) {
     try {
-        const res = await httpService.get(`products${category}`)
+        const res = await httpService.get(params)
         return res
     } catch (err) {
         console.log('product service: issues with get requset', err)

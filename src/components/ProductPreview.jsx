@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { saveProduct } from '../store/actions/product.action'
 
-import { productService } from '../services/product.service'
+import { cartService } from '../services/cart.service'
 
 export function ProductPreview({ product }) {
 
@@ -15,7 +15,7 @@ export function ProductPreview({ product }) {
             //and then render the changes.
             //but since we working with LocalStorage its ok too..
             const res = await dispatch(saveProduct(product))
-            productService.addProduct(res.product)
+            cartService.addProduct(res.product)
         } catch (err) {
             console.error(err);
         }

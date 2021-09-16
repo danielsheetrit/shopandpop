@@ -9,7 +9,7 @@ import { AppFooter } from '../components/AppFooter'
 import { Dashbored } from '../components/Dashbored'
 
 import { emptyCartImg } from '../services/constances.service'
-import { productService } from '../services/product.service'
+import { cartService } from '../services/cart.service'
 
 import { auth } from '../firebase'
 import { useSnackbar } from 'notistack'
@@ -92,7 +92,7 @@ export function ProductCheckout() {
     }
 
     async function handlePurchase() {
-        await productService.clearStorage()
+        await cartService.clearStorage()
         dispatch(eraseCart())
         histroy.push('/')
         handleSnackbar('Purchase successfully', 'success')

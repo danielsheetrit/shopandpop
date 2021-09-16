@@ -4,7 +4,7 @@ import { useParams } from 'react-router'
 import { useDispatch } from 'react-redux'
 import { saveProduct } from '../store/actions/product.action'
 
-import { productService } from '../services/product.service'
+import { cartService } from '../services/cart.service'
 import { AppFooter } from '../components/AppFooter'
 
 import Backdrop from '../components/Backdrop'
@@ -23,12 +23,12 @@ export function ProductDetails() {
 
     async function handleAddition(product) {
         const res = await dispatch(saveProduct(product))
-        productService.addProduct(res.product)
+        cartService.addProduct(res.product)
     }
 
     async function fetchSingleProduct(id) {
         setIsLoading(true)
-        const product = await productService.query(`/${id}`)
+        const product = await cartService.query(`product/${id}`)
         setProduct(product)
         setIsLoading(false)
     }

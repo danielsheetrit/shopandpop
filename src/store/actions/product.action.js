@@ -1,9 +1,9 @@
-import { productService } from '../../services/product.service'
+import { cartService } from '../../services/cart.service'
 
 export function getProducts(params) {
     return async dispatch => {
         try {
-            const products = await productService.query(params)
+            const products = await cartService.query(params)
             dispatch({ type: 'SET_PRODUCTS', products })
             return products
         } catch (err) {
