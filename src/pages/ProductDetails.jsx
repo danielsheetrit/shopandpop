@@ -1,12 +1,14 @@
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router'
 
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { saveProduct } from '../store/actions/product.action'
 
 import { cartService } from '../services/cart.service'
 import { AppFooter } from '../components/AppFooter'
 
+
+import { useSnackbar } from 'notistack'
 import Backdrop from '../components/Backdrop'
 
 export function ProductDetails() {
@@ -16,12 +18,18 @@ export function ProductDetails() {
     const { id } = useParams()
 
     const dispatch = useDispatch()
+    const user = useSelector(state => state.productModule.currentUser)
+
+    const { enqueueSnackbar, closeSnackbar } = useSnackbar();
 
     useEffect(() => {
         fetchSingleProduct(id)
     }, [])
 
     async function handleAddition(product) {
+
+        if (!user) handleSnackbar('You have to log in first', 'error')
+
         const res = await dispatch(saveProduct(product))
         cartService.addProduct(res.product)
     }
@@ -31,6 +39,11 @@ export function ProductDetails() {
         const product = await cartService.query(`product/${id}`)
         setProduct(product)
         setIsLoading(false)
+    }
+
+    function handleSnackbar(msg, variant) {
+        enqueueSnackbar(`${msg}`, { variant: variant });
+        setTimeout(() => closeSnackbar(), 4000)
     }
 
     return (!isLoading ?

@@ -1,5 +1,9 @@
 import Axios from 'axios'
 
+var axios = Axios.create({
+    withCredentials: true
+})
+
 const BASE_URL = process.env.NODE_ENV === 'production'
     ? '/api/'
     : '//localhost:3030/api/'
@@ -9,11 +13,8 @@ export const httpService = {
 }
 
 export async function get(endpoint) {
-
-    console.log('GOT:', endpoint)
-
     try {
-        const res = await Axios({
+        const res = await axios({
             url: `${BASE_URL}${endpoint}`,
             method: 'get',
         })

@@ -1,24 +1,30 @@
 import { Link } from 'react-router-dom'
 
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { saveProduct } from '../store/actions/product.action'
 
 import { cartService } from '../services/cart.service'
 
+import { useSnackbar } from 'notistack'
+
 export function ProductPreview({ product }) {
 
     const dispatch = useDispatch()
+    const user = useSelector(state => state.productModule.currentUser)
+
+    const { enqueueSnackbar, closeSnackbar } = useSnackbar();
 
     async function handleAddition(product) {
-        try {
-            //In general we will make a call for the DB, 
-            //and then render the changes.
-            //but since we working with LocalStorage its ok too..
-            const res = await dispatch(saveProduct(product))
-            cartService.addProduct(res.product)
-        } catch (err) {
-            console.error(err);
-        }
+
+        if (!user) handleSnackbar('You have to log in first', 'error')
+
+        const res = await dispatch(saveProduct(product))
+        cartService.addProduct(res.product)
+    }
+
+    function handleSnackbar(msg, variant) {
+        enqueueSnackbar(`${msg}`, { variant: variant });
+        setTimeout(() => closeSnackbar(), 4000)
     }
 
     return (
